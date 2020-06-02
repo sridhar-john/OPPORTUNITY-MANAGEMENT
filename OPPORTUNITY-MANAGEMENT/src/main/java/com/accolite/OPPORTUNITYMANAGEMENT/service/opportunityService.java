@@ -32,7 +32,7 @@ public class opportunityService {
 	public String upadateOpportunity(opportunity o) {
 		String responseString;
 		if(opportunityRepository.updateOpportunity(o))
-			responseString="Inserted SucessFully";
+			responseString="Updated SucessFully";
 		else {
 			responseString="Somthing went wrong not added,please try again";
 		}

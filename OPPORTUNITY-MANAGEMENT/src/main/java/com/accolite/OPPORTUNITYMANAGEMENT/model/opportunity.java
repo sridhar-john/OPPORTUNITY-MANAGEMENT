@@ -92,6 +92,14 @@ public class opportunity {
 	public void setUpdated_date(String updated_date) {
 		this.updated_date = updated_date;
 	}
+	@Override
+	public String toString() {
+		return "opportunity [id=" + id + ", opportunity_name=" + opportunity_name + ", experience=" + experience
+				+ ", hiring_manager=" + hiring_manager + ", skill=" + skill + ", creator=" + creator
+				+ ", creator_email=" + creator_email + ", job_location=" + job_location + ", joining_date="
+				+ joining_date + ", updated_date=" + updated_date + "]";
+	}
+	
 	
 	
 	

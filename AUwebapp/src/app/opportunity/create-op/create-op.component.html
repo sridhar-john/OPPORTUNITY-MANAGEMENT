@@ -1,0 +1,69 @@
+<mat-toolbar>
+    <span>{{service.form.controls['id'].value?"Modify Opportunity":"New Opportunity"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>  
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+<mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+        <div class="controls-container">
+            <input type="hidden" formControlname="id">
+            <mat-form-field>
+                <input formControlName="opportunity_name" matInput  placeholder="Opportunity Name*">
+                <mat-error>This field is Mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="hiring_manager" matInput  placeholder="Hiring Manager*">
+                <mat-error>This field is Mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="skill" matInput placeholder="Skills*">
+                <mat-error>This field is Mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="creator" matInput  placeholder="Creator*">
+                <mat-error>This field is Mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="creator_email" matInput  placeholder="Creator Email*">
+                <mat-error *ngIf="service.form.controls['creator_email'].errors?.email">Invalid Emailid.</mat-error>
+                <mat-error *ngIf="service.form.controls['creator_email'].errors?.requird">This field is Mandatory.</mat-error>
+            </mat-form-field>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="controls-container">
+            <mat-form-field>
+                <mat-select formcontrolName="experience"  placeholder="Experience*">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let e of experience">
+                      <mat-option value="{{e.id}}">{{e.value}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select formcontrolName="job_location"  placeholder="Job Location*">
+                    <mat-option>None</mat-option>
+                    <ng-container *ngFor="let l of location">
+                      <mat-option value="{{l.id}}">{{l.value}}</mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="joining_date" matInput [matDatepicker]="Datepicker" [(ngModel)]="jd"  placeholder="Joining Date*">
+                <mat-datepicker-toggle matSuffix [for]="Datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #Datepicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="updated_date" matInput [matDatepicker]="myDatepicker"  [(ngModel)]="ud" placeholder="updated Date*">
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary" [disabled]="service.form.invalid" >Submit</button>
+                <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+            </div>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+</form>

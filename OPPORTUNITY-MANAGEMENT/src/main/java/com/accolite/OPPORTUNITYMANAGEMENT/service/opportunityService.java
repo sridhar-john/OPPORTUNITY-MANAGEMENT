@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.accolite.OPPORTUNITYMANAGEMENT.model.opportunity;
 import com.accolite.OPPORTUNITYMANAGEMENT.repository.opportunityRepository;
+import com.accolite.exception.ResourceNotFoundException;
 @Service
 public class opportunityService {
 	
 	@Autowired
 	opportunityRepository opportunityRepository;
 
+	
+		/* For Opportunity */
 	public List<opportunity> getAll() {
 		return opportunityRepository.findAll();
 
@@ -34,22 +37,29 @@ public class opportunityService {
 		if(opportunityRepository.updateOpportunity(o))
 			responseString="Updated SucessFully";
 		else {
-			responseString="Somthing went wrong not added,please try again";
+			responseString="Somthing went wrong not updated,please try again";
 		}
 		
 		return responseString;
 	}
 
-	public String deleteOpportunity(int id) {
-		String responseString;
+	public String deleteOpportunity(int id) throws ResourceNotFoundException {
 		if(opportunityRepository.deleteOpportunity(id))
-			responseString="Deleted SucessFully";
-		else {
-			responseString="Somthing went wrong not added,please try again";
-		}
-		
-		return responseString;
+			return "Deleted SucessFully";
+		throw new ResourceNotFoundException("Somthing went wrong not Deleted,please try again");
 	}
 
 	
+				/* for User */
+	public String checkUser(String token) {
+		
+		String responseString;
+		if(	opportunityRepository.checkUser(token))
+			responseString="Login sucessfull and User is Authenticated";
+		else {
+			responseString="Login failed,please try again";
+		}
+		
+		return responseString;
+	}
 }

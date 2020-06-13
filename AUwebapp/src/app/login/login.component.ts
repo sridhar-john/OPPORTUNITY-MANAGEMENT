@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef ,NgZone} from '@angular/core';
-
+import {environment} from 'src/environments/environment';
 import {Router} from '@angular/router';
-import { User } from '../User';
+import { User } from 'src/app/models/User';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -41,12 +41,7 @@ export class LoginComponent implements OnInit {
       (googleUser) => {
  
         let profile = googleUser.getBasicProfile();
-        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-  
+      
         
         this.imgurl=profile.getImageUrl();
         this.username=profile.getName();
@@ -64,8 +59,7 @@ export class LoginComponent implements OnInit {
          let resp=this.service.checkUser();
          
          resp.subscribe(result => this.ngZone.run(() =>{
-           console.log(result)
-            if(result === "Login sucessfull and User is Authenticated")
+            if(result === "200 OK")
             {
               localStorage.setItem('login',"loggedIn");
              this._router.navigateByUrl("/opportunity");
@@ -88,9 +82,9 @@ export class LoginComponent implements OnInit {
     window['googleSDKLoaded'] = () => {
       window['gapi'].load('auth2', () => {
         this.auth2 = window['gapi'].auth2.init({
-          client_id: '447243278135-une39aofm0e0f5luu9vubl53h02om6hm.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
-          scope: 'profile email'
+          client_id: environment.client_id,
+          cookiepolicy: environment.cookiepolicy,
+          scope: environment.scope
         });
         this.prepareLoginButton();
       });
@@ -100,7 +94,7 @@ export class LoginComponent implements OnInit {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {return;}
       js = d.createElement(s); js.id = id;
-      js.src = "https://apis.google.com/js/platform.js?onload=googleSDKLoaded";
+      js.src = environment.src;
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'google-jssdk'));
   

@@ -38,52 +38,51 @@ public class opportunityController {
 	/* For  Opportunity */
 
 	
-	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/")
 	public List<opportunity> getAll(@RequestHeader("Authorization") String token)
 	{
 		
-		if(opportunityService.checkUser(token)=="Login sucessfull and User is Authenticated")
+		if(opportunityService.checkUser(token)=="200 OK")
 		{
 				return opportunityService.getAll();
 		}
 		return null;
 	}
 	
-	//@CrossOrigin(origins = "http://localhost:4200")
+	
 	@PostMapping("/")
 	public String addEmployee(@RequestBody opportunity o,@RequestHeader("Authorization") String token)
 	{
-		if(opportunityService.checkUser(token)=="Login sucessfull and User is Authenticated")
+		if(opportunityService.checkUser(token)=="200 OK")
 		{
 			return opportunityService.addOpportunity(o);
 		}
-		return "User is Not authenticated please login!";
+		return "401 Unauthorized";
 	}
 	
-	//@CrossOrigin(origins = "http://localhost:4200")
+	
+	
 	@PutMapping("/")
 	public String updateEmployee(@RequestBody opportunity o,@RequestHeader("Authorization") String token)
 	{
-		if(opportunityService.checkUser(token)=="Login sucessfull and User is Authenticated")
+		if(opportunityService.checkUser(token)=="200 OK")
 		{
 			return opportunityService.upadateOpportunity(o);
 		}
-		return "User is Not authenticated please login!";
+		return "401 Unauthorized";
 		
 	}
 	
 	
-	//@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/{id}")
 	public String deleteEmployee(@PathVariable("id") int id,@RequestHeader("Authorization") String token) throws ResourceNotFoundException
 	{
 		
-		if(opportunityService.checkUser(token)=="Login sucessfull and User is Authenticated")
+		if(opportunityService.checkUser(token)=="200 OK")
 		{
 			return opportunityService.deleteOpportunity(id);
 		}
-		return "User is Not authenticated please login!";
+		return "401 Unauthorized";
 	}
 
 	

@@ -18,6 +18,7 @@ public class opportunityService {
 		/* For Opportunity */
 	public List<opportunity> getAll() {
 		return opportunityRepository.findAll();
+		
 
 	}
 
@@ -32,6 +33,8 @@ public class opportunityService {
 		return responseString;
 	}
 
+	
+	
 	public String upadateOpportunity(opportunity o) {
 		String responseString;
 		if(opportunityRepository.updateOpportunity(o))
@@ -42,22 +45,33 @@ public class opportunityService {
 		
 		return responseString;
 	}
+	
+	
+	
 
 	public String deleteOpportunity(int id) throws ResourceNotFoundException {
 		if(opportunityRepository.deleteOpportunity(id))
+		{
 			return "Deleted SucessFully";
+		}
+		else {
 		throw new ResourceNotFoundException("Somthing went wrong not Deleted,please try again");
-	}
+	}}
 
+	
+	
+	
+	
+	
 	
 				/* for User */
 	public String checkUser(String token) {
 		
 		String responseString;
 		if(	opportunityRepository.checkUser(token))
-			responseString="Login sucessfull and User is Authenticated";
+			responseString="200 OK";
 		else {
-			responseString="Login failed,please try again";
+			responseString="401 Unauthorized";
 		}
 		
 		return responseString;

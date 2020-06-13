@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +26,6 @@ public class OpportunityManagementDaoTest {
 
 	@Autowired
 	opportunityRepository repository;
-	
-
-	
 
 	
 	@Test
@@ -76,6 +72,7 @@ public class OpportunityManagementDaoTest {
 		emp.setUpdated_date("2/apr/2020");
 
 		System.out.println(emp);
+		
 
 		Mockito.when(jdbcTemplate.update(ArgumentMatchers.anyString(), ArgumentMatchers.anyString(),
 				ArgumentMatchers.anyInt(), ArgumentMatchers.anyString(), ArgumentMatchers.anyString(),
@@ -97,6 +94,21 @@ public class OpportunityManagementDaoTest {
 		repository.deleteOpportunity(1);
 		verify(jdbcTemplate,times(1)).update(ArgumentMatchers.anyString(),ArgumentMatchers.anyInt());
 	}
+	
+	
+//	@Test
+//	public void getAllOpportunitiesTest() {
+//		
+//		
+//		List<opportunity> opportunityList = new ArrayList<opportunity>();
+//		opportunityList.add();
+//		Mockito.when(jdbcTemplate.update(ArgumentMatchers.anyString(), ArgumentMatchers.any(RowMapper.class)))
+//				.thenReturn(opportunityList);
+//		List<opportunity> list = repository.findAll();
+//		assertEquals(1, list.size());
+//	}
+
+	
 	
 	
 }

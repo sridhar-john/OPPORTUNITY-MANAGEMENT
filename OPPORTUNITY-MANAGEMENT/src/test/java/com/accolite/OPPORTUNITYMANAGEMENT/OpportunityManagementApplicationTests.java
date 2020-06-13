@@ -81,12 +81,13 @@ class OpportunityManagementApplicationTests {
 		assertEquals("Updated SucessFully", service.upadateOpportunity(o));
 	}
 
+	
 	@Test
 	public void checkUserTest() {
 		String token = "112535508737671762177";
 
 		when(repository.checkUser(token)).thenReturn(true);
-		assertEquals("Login sucessfull and User is Authenticated", service.checkUser(token));
+		assertEquals("200 OK", service.checkUser(token));
 	}
 	
 	}

@@ -15,8 +15,8 @@
   .loginBtn {
     box-sizing: border-box;
     position: absolute;
-    width: 13em;  /*- apply for fixed size */
-    margin: 0.2em;
+    width: 25em;  /*- apply for fixed size */
+    margin: 1em;
     padding: 0 15px 0 46px;
     border: none;
     text-align: center;

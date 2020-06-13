@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor,HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService implements HttpInterceptor {
   
-
+  BASE_URL=environment.BASE_URL;
   constructor(private http: HttpClient) { }
 
  intercept(req,next){
@@ -19,7 +20,7 @@ export class UserService implements HttpInterceptor {
  }
   checkUser()
   {
-    return this.http.get("http://localhost:8080/opportunity/users",{responseType:'text' as 'json'});
+    return this.http.get(this.BASE_URL+"users",{responseType:'text' as 'json'});
   }
   getToken()
 {

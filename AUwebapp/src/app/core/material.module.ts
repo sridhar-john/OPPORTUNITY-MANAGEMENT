@@ -1,7 +1,8 @@
 import {NgModule} from "@angular/core";
 import { CommonModule } from '@angular/common';
+
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
-import {CdkTableModule} from '@angular/cdk/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -46,12 +47,12 @@ import {MatMenuModule} from '@angular/material/menu';
   MatDatepickerModule,
   MatNativeDateModule,
   MatSnackBarModule,
-  CdkTableModule,
   MatPaginatorModule,
   MatSortModule,
   FormsModule,
   NgxChartsModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressBarModule
   ],
   exports: [
     CommonModule, 
@@ -73,12 +74,12 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    CdkTableModule,
     MatPaginatorModule,
     MatSortModule,
     FormsModule,
     NgxChartsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
     ],
 })
 export class CustomMaterialModule { }

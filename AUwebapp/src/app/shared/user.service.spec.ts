@@ -16,4 +16,16 @@ describe('UserService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should check user is Authenticated',() =>{
+     
+    service.checkUser().subscribe(data=>{
+      console.log(data);
+      expect(data).toEqual("Login sucessfull and User is Authenticated");
+    });
+  });
+
+ 
+
+
 });

@@ -1,6 +1,6 @@
 import { Component, OnInit ,ViewChild} from '@angular/core';
 import { CreateOpService } from 'src/app/shared/create-op.service';
-import { Opportunity } from 'src/app/Opportunity';
+import { Opportunity } from 'src/app/models/Opportunity';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -35,18 +35,15 @@ export class SearchComponent implements OnInit {
     }
    
     this.service.getOpportunity().subscribe((data: any[])=>{
-      console.log(data);
+    
       this.dataSource.data = data;
       this.dataSource.sort=this.sort;
-      this.dataSource.paginator=this.paginator;
-
-  
+      this.dataSource.paginator=this.paginator;  
       
     }
     ,(error) => {
       alert("User is not Authenticated Please login");
       this._router.navigateByUrl("/login");
-     // alert(JSON.stringify(error, undefined, 2));
     });
   }
 
@@ -65,19 +62,45 @@ export class SearchComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus=true;
     dialogConfig.width= "60%";
-    this.dialog.open(CreateOpComponent,dialogConfig);
+
+    const dialogRef = this.dialog.open(CreateOpComponent, dialogConfig)
+  dialogRef.afterClosed().subscribe(result => {
+  
+    this.service.getOpportunity().subscribe((data: any[])=>{
+    
+      this.dataSource.data = data;
+      this.dataSource.sort=this.sort;
+      this.dataSource.paginator=this.paginator;  
+    }
+   
+    );
+});
+    
   }
 
 onEdit(row)
 {
-  console.log(row);
+  console.log("one row :",row);
   this.service.populateForm(row);
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus=true;
   dialogConfig.width= "60%";
-  this.dialog.open(CreateOpComponent,dialogConfig);
+  dialogConfig.data= row;
   
+  const dialogRef = this.dialog.open(CreateOpComponent, dialogConfig)
+  dialogRef.afterClosed().subscribe(result => {
+  
+    this.service.getOpportunity().subscribe((data: any[])=>{
+    
+      this.dataSource.data = data;
+      this.dataSource.sort=this.sort;
+      this.dataSource.paginator=this.paginator;  
+      
+    }
+   
+    );
+});
 }
 
 onDelete(id)
@@ -85,9 +108,17 @@ onDelete(id)
   if(confirm("Are You sure  to delete this record?")){
     let res=this.service.deleteOpportunity(id);
     res.subscribe(data => {
-      console.log(data)
       this.delete_message=data;
-      console.log(this.delete_message);
+
+      this.service.getOpportunity().subscribe((data: any[])=>{
+    
+        this.dataSource.data = data;
+        this.dataSource.sort=this.sort;
+        this.dataSource.paginator=this.paginator;         
+      }
+     
+      );
+
     });
     this.notificationService.warn('Deleted sucessfully!');
   }

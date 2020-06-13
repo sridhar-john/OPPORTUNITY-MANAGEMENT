@@ -33,32 +33,29 @@
     </mat-grid-tile>
     <mat-grid-tile>
         <div class="controls-container">
+     
             <mat-form-field>
-                <mat-select formcontrolName="experience"  placeholder="Experience*">
-                    <mat-option>None</mat-option>
-                    <ng-container *ngFor="let e of experience">
-                      <mat-option value="{{e.id}}">{{e.value}}</mat-option>
-                    </ng-container>
+                <mat-select [formControlName]="'experience'" (selectionChange)="onExperience($event)" placeholder="Experience*">
+                    <mat-option *ngFor="let e of experience" [value]="e">{{e}}</mat-option>
+                </mat-select>
+                <mat-error >This field is Mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select [formControlName]="'job_location'" (selectionChange)="onLocation($event)" placeholder="Job Location*">
+                    <mat-option *ngFor="let l of location" [value]="l">{{l}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field>
-                <mat-select formcontrolName="job_location"  placeholder="Job Location*">
-                    <mat-option>None</mat-option>
-                    <ng-container *ngFor="let l of location">
-                      <mat-option value="{{l.id}}">{{l.value}}</mat-option>
-                    </ng-container>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <input formControlName="joining_date" matInput [matDatepicker]="Datepicker" [(ngModel)]="jd"  placeholder="Joining Date*">
-                <mat-datepicker-toggle matSuffix [for]="Datepicker"></mat-datepicker-toggle>
-                <mat-datepicker #Datepicker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-                <input formControlName="updated_date" matInput [matDatepicker]="myDatepicker"  [(ngModel)]="ud" placeholder="updated Date*">
-                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-                <mat-datepicker #myDatepicker></mat-datepicker>
-            </mat-form-field>
+            <mat-form-field class="mr-sm-24" fxFlex  >
+                <input matInput [matDatepicker]="picker" placeholder="Joining Date*" autocomplete="off" [(ngModel)]="jd" name="date" formControlName="joining_date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker   #picker></mat-datepicker>
+             </mat-form-field>
+             
+             <mat-form-field class="mr-sm-24" fxFlex  >
+                <input matInput [matDatepicker]="picker1" placeholder="Updated Date*" autocomplete="off" [(ngModel)]="ud" name="date" formControlName="updated_date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker   #picker1></mat-datepicker>
+             </mat-form-field>
             <div>
                 <button mat-raised-button color="primary" [disabled]="service.form.invalid" >Submit</button>
                 <button mat-raised-button color="warn" (click)="onClear()">Clear</button>

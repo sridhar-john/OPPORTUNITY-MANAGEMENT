@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { single1 } from 'src/app/charts/data';
-// import {single1} from 'src/app/opportunity/search/search.component';
 import { single2} from 'src/app/charts/data';
 import { Router } from '@angular/router';
 import { CreateOpService } from 'src/app/shared/create-op.service';
@@ -27,12 +25,10 @@ export class TrendsComponent implements OnInit {
 
   
 }
-  
-  
   single1: any[];
   
   view1: any[] = [700, 400];
- // options
+
  gradient1: boolean = false;
  showLegend1: boolean = true;
  showLabels: boolean = true;
@@ -44,15 +40,12 @@ export class TrendsComponent implements OnInit {
    domain: ['#ff3333', '#ffff1a', '#66ff66', '#1a8cff']
  };
  onSelect1(data): void {
-  console.log('Item clicked', JSON.parse(JSON.stringify(data)));
 }
 
 onActivate1(data): void {
-  console.log('Activate', JSON.parse(JSON.stringify(data)));
 }
 
 onDeactivate1(data): void {
-  console.log('Deactivate', JSON.parse(JSON.stringify(data)));
 }
 
 
@@ -63,7 +56,6 @@ multi2: any[];
 
 view2: any[] = [700, 400];
 
-// options
 showXAxis = true;
 showYAxis = true;
 gradient2 = false;
@@ -79,12 +71,12 @@ colorScheme2 = {
 };
 
 onSelect2(event) {
-  console.log(event);
+ 
 }
-  onLogout()
-  {
+onLogout()
+{
     localStorage.clear();
     this._router.navigateByUrl("/login");    
-  }
+}
 
 }

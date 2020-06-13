@@ -1,6 +1,5 @@
 package com.accolite.exception;
 
-
 import java.util.Date;
 
 import org.springframework.http.HttpStatus;

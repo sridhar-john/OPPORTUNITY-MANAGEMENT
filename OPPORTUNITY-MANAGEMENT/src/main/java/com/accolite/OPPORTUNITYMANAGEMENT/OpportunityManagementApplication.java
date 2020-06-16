@@ -10,4 +10,6 @@ public class OpportunityManagementApplication {
 		SpringApplication.run(OpportunityManagementApplication.class, args);
 	}
 
+
 }
+

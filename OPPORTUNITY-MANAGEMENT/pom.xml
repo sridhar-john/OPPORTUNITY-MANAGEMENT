@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.accolite</groupId>
-	<artifactId>OPPORTUNITY-MANAGEMENT</artifactId>
+	<artifactId>opportunity-mgmt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OPPORTUNITY-MANAGEMENT</name>
 	<description>opportunity-management app using Spring Boot and jdbc template</description>

@@ -1,16 +1,16 @@
 package com.accolite.OPPORTUNITYMANAGEMENT;
 
-import org.junit.runner.RunWith;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,7 +25,6 @@ import com.accolite.exception.ResourceNotFoundException;
 @SpringBootTest
 class OpportunityManagementApplicationTests {
 
-	
 	@Test
 	void contextLoads() {
 
@@ -36,7 +35,6 @@ class OpportunityManagementApplicationTests {
 
 	@MockBean
 	private opportunityRepository repository;
-	
 
 	@Test
 	public void getAllTest() {
@@ -78,16 +76,15 @@ class OpportunityManagementApplicationTests {
 		opportunity o = new opportunity(2, "java dev", 3, "john", "java", "suresh", "ram@gmail.com", "banglore",
 				"01/06/20", "23/05/20");
 		when(repository.updateOpportunity(o)).thenReturn(true);
-		assertEquals("Updated SucessFully", service.upadateOpportunity(o));
+		assertEquals("Updated SucessFully", service.updateOpportunity(o));
 	}
 
-	
 	@Test
 	public void checkUserTest() {
 		String token = "112535508737671762177";
 
 		when(repository.checkUser(token)).thenReturn(true);
-		assertEquals("200 OK", service.checkUser(token));
+		assertEquals(true, service.checkUser(token));
 	}
-	
-	}
+
+}

@@ -20,7 +20,8 @@ export class UserService implements HttpInterceptor {
  }
   checkUser()
   {
-    return this.http.get(this.BASE_URL+"users",{responseType:'text' as 'json'});
+    return this.http.get(this.BASE_URL+"users");
+    // {responseType:'text' as 'json'}
   }
   getToken()
 {

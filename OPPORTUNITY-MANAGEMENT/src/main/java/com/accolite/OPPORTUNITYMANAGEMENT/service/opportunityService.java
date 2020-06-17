@@ -1,6 +1,7 @@
 package com.accolite.OPPORTUNITYMANAGEMENT.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,5 +60,23 @@ public class opportunityService {
 			return false;
 		}
 
+	}
+
+	public List<Map<String, String>> getCountOpportunity() {
+		List<Map<String, String>> list = null;
+		list = opportunityRepository.getCountOpportunity();
+		return list;
+	}
+
+	public List<Map<String, String>> getCountLocation() {
+		List<Map<String, String>> list = null;
+		list = opportunityRepository.getCountLocation();
+		return list;
+	}
+
+	public List<Map<String, String>> getCountSkill() {
+		List<Map<String, String>> list = null;
+		list = opportunityRepository.getCountSkill();
+		return list;
 	}
 }

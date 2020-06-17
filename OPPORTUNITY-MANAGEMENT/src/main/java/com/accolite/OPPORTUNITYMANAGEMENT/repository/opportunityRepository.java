@@ -1,10 +1,17 @@
 package com.accolite.OPPORTUNITYMANAGEMENT.repository;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -85,6 +92,102 @@ public class opportunityRepository {
 		else {
 			return false;
 		}
+	}
+
+	public List<Map<String, String>> getCountOpportunity() {
+		String Query = "SELECT opportunity_name, count(*) FROM opportunity GROUP BY opportunity_name; ";
+		List<Map<String, String>> item = new ArrayList<>();
+		try {
+			jdbcTemplate.query(Query, new RowCallbackHandler() {
+				public void processRow(ResultSet resultSet) throws SQLException {
+					do {
+						Map<String, String> temp = new HashMap<>();
+						temp.put("name", resultSet.getString(1));
+						temp.put("value", resultSet.getString(2));
+						item.add(temp);
+					} while (resultSet.next());
+					Collections.sort(item, new Comparator<Map<String, String>>() {
+
+						@Override
+						public int compare(Map<String, String> o1, Map<String, String> o2) {
+							String v1 = o1.get("name").toLowerCase();
+							String v2 = o2.get("name").toLowerCase();
+							return v1.compareTo(v2);
+						}
+
+					});
+
+				}
+			});
+		} catch (Exception e) {
+
+		}
+		return item;
+	}
+
+	public List<Map<String, String>> getCountLocation() {
+		String Query = "SELECT job_location, count(*) FROM opportunity GROUP BY job_location; ";
+		List<Map<String, String>> item = new ArrayList<>();
+		try {
+			jdbcTemplate.query(Query, new RowCallbackHandler() {
+				public void processRow(ResultSet resultSet) throws SQLException {
+					do {
+
+						Map<String, String> temp = new HashMap<>();
+						temp.put("name", resultSet.getString(1));
+						temp.put("value", resultSet.getString(2));
+						item.add(temp);
+					} while (resultSet.next());
+					Collections.sort(item, new Comparator<Map<String, String>>() {
+
+						@Override
+						public int compare(Map<String, String> o1, Map<String, String> o2) {
+							String v1 = o1.get("name").toLowerCase();
+							String v2 = o2.get("name").toLowerCase();
+							return v1.compareTo(v2);
+						}
+
+					});
+
+				}
+			});
+		} catch (Exception e) {
+
+		}
+		return item;
+	}
+
+	public List<Map<String, String>> getCountSkill() {
+		String Query = "SELECT skill, count(*) FROM opportunity GROUP BY skill;";
+		List<Map<String, String>> item = new ArrayList<>();
+		try {
+			jdbcTemplate.query(Query, new RowCallbackHandler() {
+				public void processRow(ResultSet resultSet) throws SQLException {
+					do {
+
+						Map<String, String> temp = new HashMap<>();
+						temp.put("name", resultSet.getString(1));
+						temp.put("value", resultSet.getString(2));
+						System.out.println(temp);
+						item.add(temp);
+					} while (resultSet.next());
+					Collections.sort(item, new Comparator<Map<String, String>>() {
+
+						@Override
+						public int compare(Map<String, String> o1, Map<String, String> o2) {
+							String v1 = o1.get("name").toLowerCase();
+							String v2 = o2.get("name").toLowerCase();
+							return v1.compareTo(v2);
+						}
+
+					});
+
+				}
+			});
+		} catch (Exception e) {
+
+		}
+		return item;
 	}
 
 }

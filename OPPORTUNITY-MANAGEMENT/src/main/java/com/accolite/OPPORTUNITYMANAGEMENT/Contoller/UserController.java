@@ -22,7 +22,7 @@ public class UserController {
 
 	@GetMapping("/users")
 	@ResponseBody
-	public ResponseEntity<String> checkUser(@RequestHeader("Authorization") String token) {
+	public ResponseEntity checkUser(@RequestHeader("Authorization") String token) {
 		HttpStatus httpstatus = null;
 		if (opportunityService.checkUser(token)) {
 			httpstatus = HttpStatus.OK;
@@ -32,7 +32,7 @@ public class UserController {
 		}
 
 		ResponseEntity<String> responseEntity = new ResponseEntity<String>("200 ok", httpstatus);
-
+		System.out.println(responseEntity);
 		return responseEntity;
 
 	}

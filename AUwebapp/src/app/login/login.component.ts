@@ -3,6 +3,7 @@ import {environment} from 'src/environments/environment';
 import {Router} from '@angular/router';
 import { User } from 'src/app/models/User';
 import { UserService } from '../shared/user.service';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
  
   @ViewChild('loginRef', {static: true }) loginElement: ElementRef;
  
-  constructor(public _router: Router,private service: UserService,private ngZone: NgZone) {
+  constructor(public _router: Router,private service: UserService,private ngZone: NgZone,private notificationService: NotificationService) {
          this.user=new User();
    }
  
@@ -57,21 +58,51 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('img',this.imgurl);
         
          let resp=this.service.checkUser();
-         
-         resp.subscribe(result => this.ngZone.run(() =>{
-            if(result === "200 OK")
-            {
-              localStorage.setItem('login',"loggedIn");
-             this._router.navigateByUrl("/opportunity");
-            }
-            else
-            {
-             this._router.navigateByUrl("/login");    
-            }
+         //=> this.ngZone.run(()
+          resp.subscribe(
+           (result)  =>{
+        //    console.log("inside");
+        //    console.log(typeof result);           
+        //    console.log(result);
+        //     if(result === "200 ok")
+        //     {
+        //       localStorage.setItem('login',"loggedIn");
+        //      this._router.navigateByUrl("/opportunity");
+        //     }
+        //     else
+        //     {
+        //       console.log("not auth");
+
+        //       this.notificationService.warn('Login Failed and User is not Authenticated');
+              
+        //      // this._router.navigateByUrl("/login");    
+          
+        //     }
         
-      },(error) => {
-        alert(JSON.stringify(error, undefined, 2));
-      }));
+      }
+      ,
+      (response)=>this.ngZone.run(()=>{
+      
+        if(response.status === 200)
+        {
+          localStorage.setItem('login',"loggedIn");
+          this._router.navigateByUrl("/opportunity");
+        }
+        else{
+          this.notificationService.warn('Login Failed and User is not Authenticated');
+              
+           this._router.navigateByUrl("/login");    
+            
+        }
+
+      
+      })
+      // ,
+      // (error: any) => {
+      //   console.log("not auth");
+      //   alert(JSON.stringify(error, undefined, 2));
+       //}
+       );
  
     });
 

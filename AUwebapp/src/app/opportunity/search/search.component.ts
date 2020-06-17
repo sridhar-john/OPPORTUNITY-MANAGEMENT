@@ -126,6 +126,7 @@ onDelete(id)
 onLogout()
 {
   localStorage.clear();
+//  this.notificationService.warn('Logged Out');
   this._router.navigateByUrl("/login");    
 }
 

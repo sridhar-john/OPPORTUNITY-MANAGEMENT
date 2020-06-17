@@ -19,3 +19,15 @@ mat-card
   font-size: large;
   font-weight: 300;
 }
+.grid{
+  width: 100px;
+  padding: 2px;
+  margin:10px;
+
+}
+.card{
+  width: auto;
+  padding: 2px;
+  margin:10px;
+
+}

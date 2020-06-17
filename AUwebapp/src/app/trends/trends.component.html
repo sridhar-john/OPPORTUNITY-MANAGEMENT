@@ -14,43 +14,91 @@
         <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
     </mat-toolbar>  
 <div>
-<mat-card>Job Opportunities</mat-card>
+<mat-card>Job Opportunities By Role</mat-card>
 </div>
 <div>
-<ngx-charts-pie-chart
-  [view]="view1"
-  [scheme]="colorScheme1"
-  [results]="single1"
-  [gradient]="gradient1"
-  [legend]="showLegend1"
-  [legendPosition]="legendPosition1"
-  [labels]="showLabels"
-  [doughnut]="isDoughnut"
-  (select)="onSelect1($event)"
-  (activate)="onActivate1($event)"
-  (deactivate)="onDeactivate1($event)"
-  >
-</ngx-charts-pie-chart>
+<mat-grid-list cols="2" rowHeight="400px" md-gutter-gt-sm="0px" >
+  <mat-grid-tile class="grid">
+   <ngx-charts-pie-chart
+    [view]="view1"
+    [scheme]="colorScheme1"
+    [results]="single1"
+    [gradient]="gradient1"
+    [legend]="showLegend1"
+    [legendPosition]="legendPosition1"
+    [labels]="showLabels"
+    [doughnut]="isDoughnut"
+    >
+    </ngx-charts-pie-chart>
+  </mat-grid-tile>
+  <mat-grid-tile class="grid"> 
+    <ngx-charts-bar-vertical 
+      [view]="view2"
+      [scheme]="colorScheme2"
+      [results]="single1"
+      [gradient]="gradient2"
+      [xAxis]="showXAxis2"
+      [yAxis]="showYAxis2"
+      [legend]="showLegend2"
+      [legendPosition]="legendPosition2"
+      [showXAxisLabel]="showXAxisLabel2"
+      [showYAxisLabel]="showYAxisLabel2"
+      [xAxisLabel]="xAxisLabel2"
+      [yAxisLabel]="yAxisLabel2"
+    >
+    </ngx-charts-bar-vertical>
+    </mat-grid-tile>
+</mat-grid-list>
 </div>
-
+    
+<div>
+  </div>
+  
 
 <div>
-<ngx-charts-bar-vertical 
-  [view]="view2"
-  [scheme]="colorScheme2"
-  [results]="single2"
-  [gradient]="gradient2"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend2"
-  [legendPosition]="legendPosition2"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect2($event)">
-</ngx-charts-bar-vertical>
+  <mat-grid-list cols="2" rowHeight="400px" md-gutter-gt-sm="0px" >
+    <mat-card>Job Opportunities</mat-card> 
+    
+    <!-- <mat-card class="card">Job Opportunities</mat-card> -->
+
+  <mat-grid-tile class="grid"> 
+
+  <ngx-charts-bar-vertical 
+    [view]="view3"
+    [scheme]="colorScheme3"
+    [results]="single3"
+    [gradient]="gradient3"
+    [xAxis]="showXAxis3"
+    [yAxis]="showYAxis3"
+    [legend]="showLegend3"
+    [legendPosition]="legendPosition3"
+    [showXAxisLabel]="showXAxisLabel3"
+    [showYAxisLabel]="showYAxisLabel3"
+    [xAxisLabel]="xAxisLabel3"
+    [yAxisLabel]="yAxisLabel3"
+    >
+  </ngx-charts-bar-vertical>
+  </mat-grid-tile>
+  <mat-grid-tile class="grid"> 
+    <ngx-charts-bar-vertical 
+      [view]="view3"
+      [scheme]="colorScheme4"
+      [results]="single4"
+      [gradient]="gradient4"
+      [xAxis]="showXAxis4"
+      [yAxis]="showYAxis4"
+      [legend]="showLegend4"
+      [legendPosition]="legendPosition4"
+      [showXAxisLabel]="showXAxisLabel4"
+      [showYAxisLabel]="showYAxisLabel4"
+      [xAxisLabel]="xAxisLabel4"
+      [yAxisLabel]="yAxisLabel4"
+      >
+    </ngx-charts-bar-vertical>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
+
 </div>  
   
  

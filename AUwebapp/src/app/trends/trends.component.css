@@ -29,6 +29,7 @@ mat-card
   padding: 2px;
   margin:10px;
 
+
 }
 .card{
   width: auto;
@@ -50,6 +51,8 @@ mat-card
 .toolbar
 {
   background-color: #0c1b24;
+  
+
 }
  .img2{
     width: 50px;
@@ -57,3 +60,4 @@ mat-card
     border-bottom-width: 5px;
     padding: 5px 10px 5px 5px;
 } 
+

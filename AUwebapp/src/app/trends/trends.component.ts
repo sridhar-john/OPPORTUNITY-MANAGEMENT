@@ -59,21 +59,26 @@ export class TrendsComponent implements OnInit {
  legendPosition1: string = 'right';
  legendTitle:string='Developers';
  scheme:string='forest';
- colorScheme1 = "ocean";
- 
+
+colorScheme1 ={
+  domain: ['cyan','gold','blue','crimson','pink','limegreen']
+};
 
 
 view2: any[] = [500, 300];
 showXAxis2 = true;
 showYAxis2 = true;
-gradient2 = true;
+gradient2 = false;
 showLegend2 = true;
 legendPosition2='right';
 showXAxisLabel2 = true;
 xAxisLabel2 = 'Opportunities';
 showYAxisLabel2 = true;
 yAxisLabel2 = 'No Of Openings';
-colorScheme2 = 'picnic';
+
+colorScheme2 ={
+  domain: ['red','yellow','blue','limegreen','pink','skyblue']
+};
 
 
   view3: any[] = [500, 300];
@@ -86,8 +91,10 @@ colorScheme2 = 'picnic';
   xAxisLabel3 = 'Location';
   showYAxisLabel3 = true;
   yAxisLabel3 = 'No Of Openings';
-  colorScheme3 = 'picnic';
-  
+  colorScheme3 ={
+    domain: ['red','yellow','blue','limegreen','pink','skyblue']
+  };
+    
   view4: any[] = [500, 300];
   showXAxis4 = true;
   showYAxis4 = true;
@@ -98,8 +105,11 @@ colorScheme2 = 'picnic';
   xAxisLabel4 = 'Skills';
   showYAxisLabel4 = true;
   yAxisLabel4 = 'No Of Openings';
-  colorScheme4 = 'picnic';
   
+  colorScheme4 ={
+    domain: ['red','yellow','blue','limegreen','pink','skyblue']
+  };
+
  
 onLogout()
 {

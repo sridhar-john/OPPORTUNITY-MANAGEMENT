@@ -66,6 +66,7 @@ public class opportunityService {
 		List<Map<String, String>> list = null;
 		list = opportunityRepository.getCountOpportunity();
 		return list;
+
 	}
 
 	public List<Map<String, String>> getCountLocation() {

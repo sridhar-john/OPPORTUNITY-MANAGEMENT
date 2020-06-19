@@ -68,7 +68,6 @@ export class CreateOpService {
   {
     
     this.form.setValue(opportunity);
-    
 
   }
 

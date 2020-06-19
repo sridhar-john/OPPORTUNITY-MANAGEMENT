@@ -58,26 +58,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('img',this.imgurl);
         
          let resp=this.service.checkUser();
-         //=> this.ngZone.run(()
           resp.subscribe(
            (result)  =>{
-        //    console.log("inside");
-        //    console.log(typeof result);           
-        //    console.log(result);
-        //     if(result === "200 ok")
-        //     {
-        //       localStorage.setItem('login',"loggedIn");
-        //      this._router.navigateByUrl("/opportunity");
-        //     }
-        //     else
-        //     {
-        //       console.log("not auth");
-
-        //       this.notificationService.warn('Login Failed and User is not Authenticated');
-              
-        //      // this._router.navigateByUrl("/login");    
-          
-        //     }
         
       }
       ,
@@ -97,11 +79,6 @@ export class LoginComponent implements OnInit {
 
       
       })
-      // ,
-      // (error: any) => {
-      //   console.log("not auth");
-      //   alert(JSON.stringify(error, undefined, 2));
-       //}
        );
  
     });

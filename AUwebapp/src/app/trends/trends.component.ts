@@ -12,10 +12,12 @@ import { CreateOpService } from 'src/app/shared/create-op.service';
 export class TrendsComponent implements OnInit {
 
  
-  constructor(public _router: Router,public service:CreateOpService,private httpClient: HttpClient) {
+  constructor(public _router: Router,public service:CreateOpService,public httpClient: HttpClient) {
    }
   username=localStorage.getItem('username');
   email=localStorage.getItem('email');
+  image=localStorage.getItem('img');
+
   BASE_URL=environment.BASE_URL;
    public single1: Object;
    public single3: Object;

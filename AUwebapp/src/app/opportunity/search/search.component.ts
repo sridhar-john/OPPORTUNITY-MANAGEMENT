@@ -24,6 +24,8 @@ export class SearchComponent implements OnInit {
   searchKey:string;
   username=localStorage.getItem('username');
   email=localStorage.getItem('email');
+  image=localStorage.getItem('img');
+
  
   delete_message:any;
   ngOnInit(): void {
@@ -126,7 +128,6 @@ onDelete(id)
 onLogout()
 {
   localStorage.clear();
-//  this.notificationService.warn('Logged Out');
   this._router.navigateByUrl("/login");    
 }
 

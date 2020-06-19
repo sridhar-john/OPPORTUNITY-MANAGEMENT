@@ -1,16 +1,14 @@
 <div style="height: 100vh;">
-  <mat-toolbar color="basic">
-      <a mat-flat-button href="http://accolite.com/" target="_blank">Accolite</a>
+  <mat-toolbar class="toolbar">
+      <a mat-flat-button href="http://accolite.com/" target="_blank" class="logo"><img src="assets\img\accolitelogo.jpg" style="width: 200px;height: 50px;" alt=""></a>
       <span class="example-spacer1"></span>
-      <button mat-button class="opp" color="accent" routerLink='/opportunity'>Opportunity</button>
+      <button mat-button class="opp"  routerLink='/opportunity'>Opportunity</button>
       <span class="example-spacer1"></span>
-      <button mat-button class="opp" color="warn" routerLink='/trends' >Trends</button>
+      <button mat-button class="opp"  routerLink='/trends' >Trends</button>
       <span class="example-spacer"></span>
-      <button mat-button [matMenuTriggerFor]="menu">{{username}} <mat-icon color="warn">menu</mat-icon></button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>{{email}}</button>
-      </mat-menu>
-     <span class="example-spacer1"></span>
+      <img [src]="image"  alt="userimage" class="img2">
+      <button mat-button class="opp" >{{username}}</button>
+      <span class="example-spacer1"></span>
       <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
   </mat-toolbar>  
 <div>

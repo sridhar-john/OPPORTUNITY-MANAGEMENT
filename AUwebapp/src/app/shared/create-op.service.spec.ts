@@ -33,7 +33,7 @@ describe('CareteOpService', () => {
     });
 
     
-  })
+  });
 
   it('should add opportunities from the API via POST',() =>{
     const newopp ={opportunity_name:'java dev1',hiring_manager:'surya',skill: 'java',creator: 'john',creator_email: 'john@gmail.com',experience: 2,job_location: 'chennai',joining_date: '01/jun/20',updated_date: '01/may/20'};
@@ -84,6 +84,8 @@ describe('CareteOpService', () => {
         job_location.setValue("chennai");
         let joining_date=service.form.controls['joining_date'];
         joining_date.setValue("21/may/2020");
+        let updated_date=service.form.controls['updated_date'];
+        updated_date.setValue("19/may/2020");
         expect(service.form.valid).toBeTruthy();
       });
 

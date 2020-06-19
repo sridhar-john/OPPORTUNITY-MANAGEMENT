@@ -25,7 +25,12 @@ describe('UserService', () => {
     });
   });
 
- 
+  
+  it('Should Check Auth Data', () => {
+    service.getToken();
+    expect(localStorage.getItem('token')).toEqual(null);
+});
+
 
 
 });
